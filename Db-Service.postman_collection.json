@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "6e1e5bb6-1e7d-47db-929b-1e29ce106801",
+		"name": "Db-Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "account details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:62350/rest/db/9032858312",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62350",
+					"path": [
+						"rest",
+						"db",
+						"9032858312"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phoneNumber\" : \"9032858312\",\n\t\"name\" : \"Nikhil\",\n\t\n\t\"wallet\" : {\n\t\t\"balance\" : 9256983.354899,\n\t\t\"transactions\" : [\n\t\t\t\"first transaction\",\n\t\t\t\"2nd txn\",\n\t\t\t\"3rd txn\"\n\t\t\t]\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:62350/rest/db/createAccount",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62350",
+					"path": [
+						"rest",
+						"db",
+						"createAccount"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list transactions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:62350/rest/db/9032858312/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62350",
+					"path": [
+						"rest",
+						"db",
+						"9032858312",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

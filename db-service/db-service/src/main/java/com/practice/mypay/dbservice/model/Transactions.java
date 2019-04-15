@@ -1,15 +1,8 @@
 package com.practice.mypay.dbservice.model;
 
-
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.List;
-
-@Entity
-public class Wallet {
 
 /*
 1. CascadeType=Cascade.ALL to overcome below scenario
@@ -31,43 +24,34 @@ public class Wallet {
 
  */
 
+@Entity
+public class Transactions {
+
+
     @GeneratedValue(generator ="system-uuid")
     @GenericGenerator(name = "system-uuid",strategy = "uuid")
     @Id
-    private String id;
+    private String transactionId;
 
     @Column
-    private BigDecimal balance;
+    private String transactionMsg;
 
-    @Column
-    @OneToMany
-    @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
-    private List<Transactions> transactions;
-
-    public Wallet() {
+    public Transactions() {
     }
 
-    public BigDecimal getBalance() {
-        return balance;
+    public String getTransactionId() {
+        return transactionId;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
-    public String getId() {
-        return id;
+    public String getTransactionMsg() {
+        return transactionMsg;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public List<Transactions> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transactions> transactions) {
-        this.transactions = transactions;
+    public void setTransactionMsg(String transactionMsg) {
+        this.transactionMsg = transactionMsg;
     }
 }

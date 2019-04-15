@@ -25,7 +25,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "Customer_DB")
+@Table(name = "Customer")
 public class Customer {
 
     @Id

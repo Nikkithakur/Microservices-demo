@@ -35,7 +35,7 @@ public class DbResource {
        return accountRepository.save(customer);
     }
 
-    @GetMapping(value = "/{phoneNumber}",consumes = "application/json",produces = "application/json")
+    @GetMapping(value = "/{phoneNumber}",produces = "application/json")
     public Customer getAccountDetailsByPhoneNumber(@PathVariable("phoneNumber") final String phoneNumber)
     {
         return accountRepository.findCustomerByPhoneNumber(phoneNumber);

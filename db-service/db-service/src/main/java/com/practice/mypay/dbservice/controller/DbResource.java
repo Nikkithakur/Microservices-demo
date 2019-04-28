@@ -18,7 +18,6 @@ beneficiary - destination
 benefactor - source
  */
 @RestController
-@RequestMapping("rest/db")
 public class DbResource {
 
     @Autowired
@@ -29,26 +28,26 @@ public class DbResource {
         while calling the endpoint consumes value should be sent as header
      */
 
-    @PostMapping(value="/createAccount",consumes = "application/json",produces = "application/json")
+    @PostMapping(value="db/createAccount")
     public Customer createAccount(@RequestBody Customer customer)
     {
        return accountRepository.save(customer);
     }
 
-    @GetMapping(value = "/{phoneNumber}",produces = "application/json")
+    @GetMapping(value = "db/{phoneNumber}")
     public Customer getAccountDetailsByPhoneNumber(@PathVariable("phoneNumber") final String phoneNumber)
     {
         return accountRepository.findCustomerByPhoneNumber(phoneNumber);
     }
 
-    @GetMapping(value = "/{phoneNumber}/transactions",consumes = "application/json",produces = "application/json")
+    @GetMapping(value = "db/{phoneNumber}/transactions")
     public List<Transactions> getTransactionsListByPhoneNumber(@PathVariable("phoneNumber") final String phoneNumber)
     {
         return accountRepository.findCustomerByPhoneNumber(phoneNumber).getWallet().getTransactions();
     }
 
 
-    @GetMapping(value = "makePayment/{number1}/{number2}/{amount}",consumes = "application/json",produces = "application/json")
+    @GetMapping(value = "db/makePayment/{number1}/{number2}/{amount}")
     public Customer makePayment(@PathVariable("number1") final String number1,@PathVariable("number2") final String number2,@PathVariable("amount") final BigDecimal transferAmount)
     {
         Customer benefactor,beneficiary;

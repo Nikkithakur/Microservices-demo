@@ -21,14 +21,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/9032858312",
+					"raw": "http://localhost:65351/db/9032858312",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"9032858312"
 					]
@@ -52,14 +51,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/9849934120",
+					"raw": "http://localhost:65351/db/9849934120",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"9849934120"
 					]
@@ -84,14 +82,13 @@
 					"raw": "{\n\t\"phoneNumber\" : \"9032858312\",\n\t\"name\" : \"NikhilThakur\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 120000.695\n\t}\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/createAccount",
+					"raw": "http://localhost:65351/db/createAccount",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"createAccount"
 					],
@@ -124,14 +121,13 @@
 					"raw": "{\n\t\"phoneNumber\" : \"9849934120\",\n\t\"name\" : \"NissarPasha\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 0.695\n\t}\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/createAccount",
+					"raw": "http://localhost:65351/db/createAccount",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"createAccount"
 					],
@@ -163,14 +159,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/9032858312/transactions",
+					"raw": "http://localhost:65351/db/9032858312/transactions",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"9032858312",
 						"transactions"
@@ -195,14 +190,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/9849934120/transactions",
+					"raw": "http://localhost:65351/db/9849934120/transactions",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"9849934120",
 						"transactions"
@@ -227,18 +221,17 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:65351/rest/db/makePayment/9032858312/9849934120/259.63",
+					"raw": "http://localhost:65351/db/makePayment/9032858312/9704241125/259.63",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "65351",
 					"path": [
-						"rest",
 						"db",
 						"makePayment",
 						"9032858312",
-						"9849934120",
+						"9704241125",
 						"259.63"
 					]
 				}

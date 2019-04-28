@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "d508f18a-946b-4a6c-b4b3-39422fb8f86b",
+		"name": "accounts-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": " http://localhost:65352/rest/accounts/createCustomerAccount",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"phoneNumber\" : \"9032858312\",\n\t\"name\" : \"Nikhil\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 123698.695\n\t}\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:65352/accountsService/addAccountDetails",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65352",
+					"path": [
+						"accountsService",
+						"addAccountDetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:65352/rest/accounts/getDetails/{phoneNumber}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:65352/accountsService/getDetails/9032858312",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "65352",
+					"path": [
+						"accountsService",
+						"getDetails",
+						"9032858312"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

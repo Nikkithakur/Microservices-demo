@@ -1,0 +1,42 @@
+{
+	"info": {
+		"_postman_id": "4f2fe945-d0fe-4fe6-bb99-70895e94396c",
+		"name": "payments-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:65353/rest/payments/{benefactor}/{beneficiary}/{amount}",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:62353/paymentServices/makePayment/9032858312/9704241125/5000.696",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "62353",
+					"path": [
+						"paymentServices",
+						"makePayment",
+						"9032858312",
+						"9704241125",
+						"5000.696"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

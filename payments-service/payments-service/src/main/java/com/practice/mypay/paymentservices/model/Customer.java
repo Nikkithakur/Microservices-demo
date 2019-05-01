@@ -1,6 +1,8 @@
 package com.practice.mypay.paymentservices.model;
 
-public class Customer {
+import org.springframework.hateoas.ResourceSupport;
+
+public class Customer extends ResourceSupport {
 
 
     private String phoneNumber;

@@ -3,6 +3,9 @@ package com.practice.mypay.accountdetailsservice.controller;
 
 import com.practice.mypay.accountdetailsservice.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,11 +24,18 @@ public class AccountDetailsService {
     @Autowired
     RestTemplate restTemplate;
 
-    @GetMapping("accountsService/getDetails/{phoneNumber}")
+    @GetMapping(value="accountsService/getDetails/{phoneNumber}",produces=MediaTypes.HAL_JSON_VALUE)
     public Customer getAccountDetails(@PathVariable("phoneNumber") final  String phoneNumber)
     {
-       String url="http://db-service/db/"+phoneNumber;
-       return  restTemplate.getForObject(url, Customer.class);
+        Customer customer;
+    	String url="http://db-service/db/"+phoneNumber;
+        customer = restTemplate.getForObject(url, Customer.class);
+        Link selfLink = ControllerLinkBuilder.
+        				linkTo(AccountDetailsService.class).
+        				slash("accountsService/getDetails/"+phoneNumber).       				
+        				withSelfRel();
+        customer.add(selfLink);
+        return customer;
     }
     
     @PostMapping(value="accountsService/addAccountDetails")

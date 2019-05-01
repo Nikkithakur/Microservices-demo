@@ -3,6 +3,8 @@ package com.practice.mypay.accountdetailsservice.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.hateoas.ResourceSupport;
+
 public class Wallet {
 
     private String id;

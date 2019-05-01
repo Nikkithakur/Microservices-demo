@@ -1,5 +1,7 @@
 package com.practice.mypay.accountdetailsservice.model;
 
+import org.springframework.hateoas.ResourceSupport;
+
 /*
 1. CascadeType=Cascade.ALL to overcome below scenario
 
@@ -20,7 +22,7 @@ package com.practice.mypay.accountdetailsservice.model;
 
  */
 
-public class Transactions {
+public class Transactions  {
 
     private String transactionId;
 

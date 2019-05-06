@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
-import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
+import java.lang.reflect.Method;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 
 @RestController
 public class AccountDetailsService {
@@ -26,7 +24,7 @@ public class AccountDetailsService {
     RestTemplate restTemplate;
 
     @GetMapping(value="accountsService/getDetails/{phoneNumber}",produces=MediaTypes.HAL_JSON_VALUE)
-    public Customer getAccountDetails(@PathVariable("phoneNumber") final  String phoneNumber)
+    public Customer getAccountDetails(@PathVariable("phoneNumber") final  String phoneNumber) throws NoSuchMethodException, SecurityException
     {
         Customer customer;
     	String url="http://db-service/db/"+phoneNumber;
@@ -35,7 +33,10 @@ public class AccountDetailsService {
         				linkTo(AccountDetailsService.class).
         				slash("accountsService/getDetails/"+phoneNumber).       				
         				withSelfRel();
-        customer.add(selfLink);
+        
+        Method method=AccountDetailsService.class.getMethod("addAccountDetails",String.class);
+        Link txnLink=ControllerLinkBuilder.linkTo(method, phoneNumber).withSelfRel();
+        customer.add(selfLink,txnLink);
         return customer;
     }
     

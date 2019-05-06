@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 
@@ -43,6 +44,19 @@ public class AccountDetailsService {
     {
     	String url="http://db-service/db/createAccount";
     	return restTemplate.postForObject(url, customer, Customer.class);
+    }
+    
+    @GetMapping(value="accountsService/{phoneNumber}/transactions")
+    public List addAccountDetails(@PathVariable("phoneNumber") final String phoneNumber)
+    {
+    	String url="http://db-service/db/"+phoneNumber+"/"+"transactions";
+    	List list= restTemplate.getForObject(url,List.class);
+    	Link selfLink = ControllerLinkBuilder.
+				linkTo(AccountDetailsService.class).
+				slash("accountsService/"+phoneNumber+"/transactions").       				
+				withSelfRel();
+    	list.add(selfLink);
+    	return list;
     }
 
 

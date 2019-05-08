@@ -27,7 +27,7 @@ public class AccountDetailsService {
     public Customer getAccountDetails(@PathVariable("phoneNumber") final  String phoneNumber) throws NoSuchMethodException, SecurityException
     {
         Customer customer;
-    	String url="http://db-service/db/"+phoneNumber;
+    	String url="https://db-service/db/"+phoneNumber;
         customer = restTemplate.getForObject(url, Customer.class);
         Link selfLink = ControllerLinkBuilder.
         				linkTo(AccountDetailsService.class).
@@ -43,14 +43,14 @@ public class AccountDetailsService {
     @PostMapping(value="accountsService/addAccountDetails")
     public Customer addAccountDetails(@RequestBody Customer customer)
     {
-    	String url="http://db-service/db/createAccount";
+    	String url="https://db-service/db/createAccount";
     	return restTemplate.postForObject(url, customer, Customer.class);
     }
     
     @GetMapping(value="accountsService/{phoneNumber}/transactions")
     public List addAccountDetails(@PathVariable("phoneNumber") final String phoneNumber)
     {
-    	String url="http://db-service/db/"+phoneNumber+"/"+"transactions";
+    	String url="https://db-service/db/"+phoneNumber+"/"+"transactions";
     	List list= restTemplate.getForObject(url,List.class);
     	Link selfLink = ControllerLinkBuilder.
 				linkTo(AccountDetailsService.class).

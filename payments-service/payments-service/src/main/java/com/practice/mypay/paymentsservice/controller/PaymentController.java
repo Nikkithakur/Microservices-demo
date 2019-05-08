@@ -23,7 +23,7 @@ public class PaymentController {
 	public Customer makePayment(@PathVariable("benefactor") final String number1,@PathVariable("beneficiary") final String number2,@PathVariable("amount") final BigDecimal amount)
 	{
 		Customer customer;
-		String url ="http://db-service/db/makePayment/"+number1+"/"+number2+"/"+amount;
+		String url ="https://db-service/db/makePayment/"+number1+"/"+number2+"/"+amount;
 		Link selfLink = ControllerLinkBuilder.
 				linkTo(PaymentController.class).
 				slash("/paymentServices/makePayment/"+number1+"/"+number2+"/"+amount).       				

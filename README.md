@@ -1,6 +1,9 @@
 # Microservices-demo
 ![Architecture diagram](https://github.com/Nikkithakur/Microservices-demo/blob/master/ArchitectureDiagram.png)
 
+# Key generation
+keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
+
 ## db-service endpoints
 - [POST]create Account http://localhost:65351/rest/db/createAccount with payload
 - [GET] accountdetails http://localhost:65351/rest/db/{phonenumber}

@@ -1,6 +1,29 @@
+spring:
+  profiles:
+    active: "dev"
+    
+---
+
+spring:
+  profiles: dev
+server:
+    port: 65350
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+
+---
+
+spring:
+  profiles: prod
+server:
+    port: 9090
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+  server:
+    waitTimeInMsWhenSyncEmpty: 0

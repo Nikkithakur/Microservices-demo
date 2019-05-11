@@ -5,6 +5,7 @@ import com.practice.mypay.dbservice.model.Transactions;
 
 import com.practice.mypay.dbservice.repo.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
@@ -29,6 +30,7 @@ public class DbResource {
      */
 
     @PostMapping(value="db/createAccount")
+    @Transactional
     public Customer createAccount(@RequestBody Customer customer)
     {
        return accountRepository.save(customer);
@@ -48,6 +50,7 @@ public class DbResource {
 
 
     @GetMapping(value = "db/makePayment/{number1}/{number2}/{amount}")
+    @Transactional
     public Customer makePayment(@PathVariable("number1") final String number1,@PathVariable("number2") final String number2,@PathVariable("amount") final BigDecimal transferAmount)
     {
         Customer benefactor,beneficiary;

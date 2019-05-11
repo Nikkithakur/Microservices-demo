@@ -1,3 +1,11 @@
+spring:
+  profiles:
+    active: "dev"
+    
+---
+
+spring:
+  profiles: dev
 eureka:
   client:
     registerWithEureka: true
@@ -5,4 +13,16 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:65350/eureka/
   instance:
-hostname: localhost
+    hostname: localhost
+    
+---
+spring:
+  profiles: prod
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:9090/eureka/
+  instance:
+    hostname: localhost

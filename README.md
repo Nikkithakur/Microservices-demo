@@ -12,6 +12,8 @@ delete file from eclipse, not from disk
 delete .classpath, .settings, .project
 reimport whole project as maven project
 
+Building into single fat jar using maven shade plugin
+
 # Docker commands
 
 - [docker build -f Dockerfile-name -t image-name .]

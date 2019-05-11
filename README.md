@@ -14,14 +14,14 @@ reimport whole project as maven project
 
 # Docker commands
 
-- [docker build -f <Dockerfile-name> -t <image-name> .]
+- [docker build -f Dockerfile-name -t image-name .]
 - [docker images]
-- [docker run -p <app-port>:<exposed-port> <image-name>]
+- [docker run -p app-port:exposed-port image-name]
 - [ctrl + c], to stop app
 - [docker ps], to view list of containers and status
 - [docker container ls -a ], to view list of containers and status
-- [docker container kill <container-id1> <container-id2>], n containers can be killed.
-- [docker container rm <container-id1> <container-id2>],n containers can be removed only after killing them.
+- [docker container kill container-id1 container-id2], n containers can be killed.
+- [docker container rm container-id1 container-id2],n containers can be removed only after killing them.
 
 
 

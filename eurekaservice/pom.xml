@@ -91,6 +91,7 @@
             <filtering>true</filtering>
         </resource>
     </resources>	
+<finalName>${project.name}-${activeProfile}</finalName>
 <plugins>
 	<plugin>
                 <groupId>org.apache.maven.plugins</groupId>

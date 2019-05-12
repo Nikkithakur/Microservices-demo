@@ -12,7 +12,10 @@ delete file from eclipse, not from disk
 delete .classpath, .settings, .project
 reimport whole project as maven project
 
-Building into single fat jar using maven shade plugin
+Building into single fat jar using maven shade plugin and providing profile name to run specific configurations and build jar name.
+
+to include ojdbc jar into fat jar, we need to install ojdbc jar into maven local repo, by using below commands
+install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 
 # Docker commands
 
@@ -28,12 +31,21 @@ Building into single fat jar using maven shade plugin
 
 
 ## db-service endpoints
-- [POST]create Account http://localhost:65351/rest/db/createAccount with payload
-- [GET] accountdetails http://localhost:65351/rest/db/{phonenumber}
-- [GET] transaction list http://localhost:65351/rest/db/{phonenumber}/transactions
-- [GET]makepayment http://localhost:65351/rest/db/makePayment/{benefactor}/{beneficiary}/{transferAmount}
+- [POST]create Account http://localhost:65351/db/createAccount with payload
+- [GET] accountdetails http://localhost:65351/db/{phonenumber}
+- [GET] transaction list http://localhost:65351/db/{phonenumber}/transactions
+- [GET]makepayment http://localhost:65351/db/makePayment/{benefactor}/{beneficiary}/{transferAmount}
 
 ## eureka-service
 - http://localhost:65350/eureka/
 
 ## accountdetails-service
+
+- [POST]create Account http://localhost:65352/accountsService/getDetails/{phoneNumber}
+- [GET] accountdetails http://localhost:65352/accountsService/addAccountDetails
+- [GET] transaction list http://localhost:65352/accountsService/{phoneNumber}/transactions
+
+## payments-service endpoints
+
+- [GET]makepayment http://localhost:65353/paymentServices/makePayment/{benefactor}/{beneficiary}/{amount}
+

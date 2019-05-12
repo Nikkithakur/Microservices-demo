@@ -118,7 +118,8 @@
             <directory>src/main/resources</directory>
             <filtering>true</filtering>
         </resource>
-    </resources>	
+</resources>
+<finalName>${project.name}-${activeProfile}</finalName>	
 		<plugins>
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>

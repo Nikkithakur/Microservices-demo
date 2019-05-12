@@ -2,6 +2,17 @@
 
 spring:
   profiles: dev
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: coder
+    password: coder
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect  
 eureka:
   client:
     registerWithEureka: true

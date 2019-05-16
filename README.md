@@ -4,7 +4,7 @@
 # Key generation
 keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
 
-	## Implementing One way SSL(Https)
+## Implementing One way SSL(Https)
 
 	In pom.xml if filtering is enabled, then exclude .jks files and create another tag which says filtering is disabled where you can include .jks files
 	we have keystore and truststore
@@ -52,13 +52,13 @@ install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dvers
 
 
 ## db-service endpoints
-- [POST]create Account http://localhost:65351/db/createAccount with payload
-- [GET] accountdetails http://localhost:65351/db/{phonenumber}
-- [GET] transaction list http://localhost:65351/db/{phonenumber}/transactions
-- [GET]makepayment http://localhost:65351/db/makePayment/{benefactor}/{beneficiary}/{transferAmount}
+- [POST]create Account https://localhost:65351/db/createAccount with payload
+- [GET] accountdetails https://localhost:65351/db/{phonenumber}
+- [GET] transaction list https://localhost:65351/db/{phonenumber}/transactions
+- [GET]makepayment https://localhost:65351/db/makePayment/{benefactor}/{beneficiary}/{transferAmount}
 
 ## eureka-service
-- http://localhost:65350/eureka/
+- https://localhost:65350/eureka/
 
 ## accountdetails-service
 

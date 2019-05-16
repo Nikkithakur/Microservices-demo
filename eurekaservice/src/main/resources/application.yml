@@ -1,14 +1,31 @@
 
 spring:
   profiles: dev
+  
 server:
     port: 65350
+    ssl:
+      enabled: true
+      key-store: classpath:eureka.jks
+      key-store-password: 123456
+      key-password: 123456
+      key-alias: eureka
+      trust-store: classpath:eureka.jks
+      trust-store-password: 123456
+      
 eureka:
+  instance:
+    securePort: 65350
+    nonSecurePortEnabled: false
+    securePortEnabled: true
   client:
     registerWithEureka: false
     fetchRegistry: false
   server:
     waitTimeInMsWhenSyncEmpty: 0
+
+
+      
 
 ---
 

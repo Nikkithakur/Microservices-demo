@@ -4,6 +4,27 @@
 # Key generation
 keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
 
+	## Implementing One way SSL(Https)
+
+	In pom.xml if filtering is enabled, then exclude .jks files and create another tag which says filtering is disabled where you can include .jks files
+	we have keystore and truststore
+	- If we are running our client on embedded web server then only keystore is required, which verifies the public certificate of a server at client side.
+	- If application 1(client or db-service) wants to connect to application 2(server or eureka-server), then application 2's public certificate neets to be imported to application 1's trust store.
+	commands and server certificate common name should be equivalent to application name(the way client calls server)
+		Export:
+			- [keytool -export -alias db -file db.crt -keystore db.jks]
+			- [keytool -export -alias eureka -file eureka.crt -keystore eureka.jks]
+  
+		Import:
+			- [keytool -import -alias eureka -file eureka.crt -keystore db.jks]
+  
+	While running client application we need to pass following command line arguments using maven or gradle
+	or
+	can be passed as VM arguments in eclipse or sts
+	- [-Djavax.net.ssl.trustStore=src\\main\\resources\\db.jks]
+	- [-Djavax.net.ssl.trustStorePassword=123456]
+
+
 # For maven deppendency errors
 
 check local repository and settings.xml is properly configured with maven in eclipse or not

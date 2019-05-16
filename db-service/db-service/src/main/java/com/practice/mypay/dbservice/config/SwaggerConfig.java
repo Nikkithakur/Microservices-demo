@@ -1,7 +1,12 @@
 package com.practice.mypay.dbservice.config;
 
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -26,4 +31,6 @@ public class SwaggerConfig {
 		
 		
 	}
+	
+	
 }

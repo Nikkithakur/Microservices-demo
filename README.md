@@ -78,3 +78,9 @@ install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dvers
 
 - [GET]makepayment https://localhost:65353/paymentServices/makePayment/{benefactor}/{beneficiary}/{amount}
 
+## Swagger urls for above projects
+
+- DB https://localhost:65351/swagger-ui.html
+- ACCOUNTS https://localhost:65352/swagger-ui.html
+- PAYMENTS https://localhost:65353/swagger-ui.html
+

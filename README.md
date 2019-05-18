@@ -33,7 +33,7 @@
 	- [-Djavax.net.ssl.trustStorePassword=123456]
 
 
-# For maven deppendency errors
+# For maven dependency errors
 
 - check local repository and settings.xml is properly configured with maven in eclipse or not
 

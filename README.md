@@ -2,13 +2,13 @@
 ![Architecture diagram](https://github.com/Nikkithakur/Microservices-demo/blob/master/ArchitectureDiagram.png)
 
 # Key generation
-keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
+	keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
 
-other commands:
-	Check a stand-alone certificate
-		- [keytool -printcert -v -file mydomain.crt]
-	Check which certificates are in a Java keystore
-		- [keytool -list -v -keystore keystore.jks]
+	other commands:
+		Check a stand-alone certificate
+			- [keytool -printcert -v -file mydomain.crt]
+		Check which certificates are in a Java keystore
+			- [keytool -list -v -keystore keystore.jks]
 
 
 
@@ -35,16 +35,16 @@ other commands:
 
 # For maven deppendency errors
 
-check local repository and settings.xml is properly configured with maven in eclipse or not
+- check local repository and settings.xml is properly configured with maven in eclipse or not
 
-delete file from eclipse, not from disk
-delete .classpath, .settings, .project
-reimport whole project as maven project
+- if something goes wrong with maven indexing or updating, delete whole project from eclipse, not from disk delete .classpath, 	  .settings, .project
+- reimport whole project as maven project
 
-Building into single fat jar using maven shade plugin and providing profile name to run specific configurations and build jar name.
+# Building jar file
+- Building into single fat jar using maven shade plugin and providing profile name to run specific configurations and build jar name.
 
-to include ojdbc jar into fat jar, we need to install ojdbc jar into maven local repo, by using below commands
-install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
+- to include ojdbc jar into fat jar, we need to install ojdbc jar into maven local repo, by using below commands
+	install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dversion=11.2.0 -Dpackaging=jar
 
 # Docker commands
 

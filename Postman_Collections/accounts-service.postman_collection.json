@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": " http://localhost:65352/rest/accounts/createCustomerAccount",
+			"name": "Accounts- create Customer account",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -21,8 +21,8 @@
 					"raw": "{\n\t\"phoneNumber\" : \"9032858312\",\n\t\"name\" : \"Nikhil\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 123698.695\n\t}\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:65352/accountsService/addAccountDetails",
-					"protocol": "http",
+					"raw": "https://localhost:65352/accountsService/addAccountDetails",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -36,7 +36,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:65352/rest/accounts/getDetails/{phoneNumber}",
+			"name": "Accounts - get Customer details",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -46,13 +46,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65352/accountsService/getDetails/9032858312",
-					"protocol": "http",
+					"raw": "https://localhost:65352/accountsService/getDetails/9849934120",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -60,7 +56,28 @@
 					"path": [
 						"accountsService",
 						"getDetails",
-						"9032858312"
+						"9849934120"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accounts - get transactions list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:65352/accountsService/9032858312/transactions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "65352",
+					"path": [
+						"accountsService",
+						"9032858312",
+						"transactions"
 					]
 				}
 			},

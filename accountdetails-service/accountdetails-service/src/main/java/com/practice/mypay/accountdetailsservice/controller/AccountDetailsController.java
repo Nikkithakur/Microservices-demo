@@ -2,6 +2,8 @@ package com.practice.mypay.accountdetailsservice.controller;
 
 
 import com.practice.mypay.accountdetailsservice.model.Customer;
+import com.practice.mypay.accountdetailsservice.services.IAccountDetailsService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
@@ -11,49 +13,45 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import java.lang.reflect.Method;
 import java.util.List;
 
+// produces=MediaTypes.HAL_JSON_VALUE will remove null json fields.
 
 @RestController
-public class AccountDetailsService {
-
+public class AccountDetailsController {
+    
     @Autowired
-    RestTemplate restTemplate;
+    private IAccountDetailsService iAccountDetailsService;
 
     @GetMapping(value="accountsService/getDetails/{phoneNumber}",produces=MediaTypes.HAL_JSON_VALUE)
     public Customer getAccountDetails(@PathVariable("phoneNumber") final  String phoneNumber) throws NoSuchMethodException, SecurityException
     {
-        Customer customer;
-    	String url="https://db-service/db/"+phoneNumber;
-        customer = restTemplate.getForObject(url, Customer.class);
-        Link selfLink = ControllerLinkBuilder.
-        				linkTo(AccountDetailsService.class).
-        				slash("accountsService/getDetails/"+phoneNumber).       				
-        				withSelfRel();
-        
-        Method method=AccountDetailsService.class.getMethod("getTransactionDetails",String.class);
-        Link txnLink=ControllerLinkBuilder.linkTo(method, phoneNumber).withSelfRel();
-        customer.add(selfLink,txnLink);
-        return customer;
+    	Customer customerData = iAccountDetailsService.getAccountDetailsService(phoneNumber);
+    	Link selfLink = ControllerLinkBuilder.
+				linkTo(AccountDetailsController.class).
+				slash("accountsService/getDetails/"+phoneNumber).       				
+				withSelfRel();
+
+    	Method method=AccountDetailsController.class.getMethod("getTransactionDetails",String.class);
+    	Link txnLink=ControllerLinkBuilder.linkTo(method, phoneNumber).withSelfRel();
+    	customerData.add(selfLink,txnLink);
+    	return customerData;
     }
     
     @PostMapping(value="accountsService/addAccountDetails")
     public Customer addAccountDetails(@RequestBody Customer customer)
     {
-    	String url="https://db-service/db/createAccount";
-    	return restTemplate.postForObject(url, customer, Customer.class);
+    	return iAccountDetailsService.addAccountDetailsService(customer);
     }
     
-    @GetMapping(value="accountsService/{phoneNumber}/transactions")
+    @GetMapping(value="accountsService/{phoneNumber}/transactions",produces=MediaTypes.HAL_JSON_VALUE)
     public List getTransactionDetails(@PathVariable("phoneNumber") final String phoneNumber)
     {
-    	String url="https://db-service/db/"+phoneNumber+"/"+"transactions";
-    	List list= restTemplate.getForObject(url,List.class);
+    	List list = iAccountDetailsService.getTransactionDetailsService(phoneNumber);
     	Link selfLink = ControllerLinkBuilder.
-				linkTo(AccountDetailsService.class).
+				linkTo(AccountDetailsController.class).
 				slash("accountsService/"+phoneNumber+"/transactions").       				
 				withSelfRel();
     	list.add(selfLink);

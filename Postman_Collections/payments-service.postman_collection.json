@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:65353/rest/payments/{benefactor}/{beneficiary}/{amount}",
+			"name": "Payments - make payment",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -16,22 +16,18 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:62353/paymentServices/makePayment/9032858312/9704241125/5000.696",
-					"protocol": "http",
+					"raw": "https://localhost:65353/paymentServices/makePayment/9032858312/9849934120/5000.696",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
-					"port": "62353",
+					"port": "65353",
 					"path": [
 						"paymentServices",
 						"makePayment",
 						"9032858312",
-						"9704241125",
+						"9849934120",
 						"5000.696"
 					]
 				}

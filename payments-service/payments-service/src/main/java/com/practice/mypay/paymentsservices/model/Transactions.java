@@ -1,4 +1,4 @@
-package com.practice.mypay.paymentservices.model;
+package com.practice.mypay.paymentsservices.model;
 
 /*
 1. CascadeType=Cascade.ALL to overcome below scenario

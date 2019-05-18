@@ -16,13 +16,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65351/db/9032858312",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/9032858312",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -46,13 +42,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65351/db/9849934120",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/9849934120",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -82,8 +74,8 @@
 					"raw": "{\n\t\"phoneNumber\" : \"9032858312\",\n\t\"name\" : \"NikhilThakur\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 120000.695\n\t}\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:65351/db/createAccount",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/createAccount",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -121,8 +113,8 @@
 					"raw": "{\n\t\"phoneNumber\" : \"9849934120\",\n\t\"name\" : \"NissarPasha\",\n\t\"wallet\" : \n\t{\t\n\t\t\"balance\": 0.695\n\t}\n\t\n}"
 				},
 				"url": {
-					"raw": "http://localhost:65351/db/createAccount",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/createAccount",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -154,13 +146,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65351/db/9032858312/transactions",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/9032858312/transactions",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -185,13 +173,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65351/db/9849934120/transactions",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/9849934120/transactions",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -216,13 +200,9 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
 				"url": {
-					"raw": "http://localhost:65351/db/makePayment/9032858312/9704241125/259.63",
-					"protocol": "http",
+					"raw": "https://localhost:65351/db/makePayment/9032858312/9849934120/259.63",
+					"protocol": "https",
 					"host": [
 						"localhost"
 					],
@@ -231,7 +211,7 @@
 						"db",
 						"makePayment",
 						"9032858312",
-						"9704241125",
+						"9849934120",
 						"259.63"
 					]
 				}

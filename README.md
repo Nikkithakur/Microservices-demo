@@ -4,6 +4,14 @@
 # Key generation
 keytool -genkey -alias selfsigned -storetype PKCS12 -keyalg RSA -keysize 2048 -keystore mykeystore.jks -validity 360
 
+other commands:
+	Check a stand-alone certificate
+		- [keytool -printcert -v -file mydomain.crt]
+	Check which certificates are in a Java keystore
+		- [keytool -list -v -keystore keystore.jks]
+
+
+
 ## Implementing One way SSL(Https)
 
 	In pom.xml if filtering is enabled, then exclude .jks files and create another tag which says filtering is disabled where you can include .jks files
@@ -62,11 +70,11 @@ install:install-file -Dfile=path -DgroupId=com.oracle -DartifactId=ojdbc6 -Dvers
 
 ## accountdetails-service
 
-- [POST]create Account http://localhost:65352/accountsService/getDetails/{phoneNumber}
-- [GET] accountdetails http://localhost:65352/accountsService/addAccountDetails
-- [GET] transaction list http://localhost:65352/accountsService/{phoneNumber}/transactions
+- [POST]create Account https://localhost:65352/accountsService/getDetails/{phoneNumber}
+- [GET] accountdetails https://localhost:65352/accountsService/addAccountDetails
+- [GET] transaction list https://localhost:65352/accountsService/{phoneNumber}/transactions
 
 ## payments-service endpoints
 
-- [GET]makepayment http://localhost:65353/paymentServices/makePayment/{benefactor}/{beneficiary}/{amount}
+- [GET]makepayment https://localhost:65353/paymentServices/makePayment/{benefactor}/{beneficiary}/{amount}
 

@@ -1,0 +1,15 @@
+sqlplus connect as sysdba;
+password: root
+
+create user coder identified by coder;
+grant CREATE SESSION,CONNECT,RESOURCE to coder;
+alter user coder default tablespace users;
+ALTER SESSION SET recyclebin = OFF;
+
+---------------
+other commands:
+
+SELECT 'DROP TABLE "' || TABLE_NAME || '" CASCADE CONSTRAINTS;' FROM user_tables;
+show user;
+SELECT * FROM RECYCLEBIN;
+Purge RECYCLEBIN;

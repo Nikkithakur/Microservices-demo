@@ -1,0 +1,33 @@
+spring:
+  profiles: dev
+  
+eureka:
+  instance:
+    hostname: localhost
+    nonSecurePortEnabled: false
+    securePortEnabled: true
+    secure-port: ${server.port}
+    home-page-url: https://localhost:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: https://localhost:65350/eureka
+    
+server:
+  ssl:
+    enabled: true
+    key-store: classpath:zuul.jks
+    key-store-password: 123456
+    key-password: 123456
+    trust-store: classpath:zuul.jks
+    trust-store-password: 123456
+    key-alias: zuul
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+    

@@ -9,7 +9,7 @@ eureka:
     secure-port: ${server.port}
     home-page-url: https://localhost:${server.port}
   client:
-    registerWithEureka: true
+    registerWithEureka: false
     fetchRegistry: true
     serviceUrl:
       defaultZone: https://localhost:65350/eureka
@@ -23,11 +23,15 @@ server:
     trust-store: classpath:zuul.jks
     trust-store-password: 123456
     key-alias: zuul
-    
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+
+# service-id can be written in capitals and small
+zuul:
+  routes:
+    accountdetails-service:
+      path: /accounts/**
+      service-id: accountdetails-service
+    payments-service:
+      path: /payments/**
+      service-id: payments-service
 
     

@@ -1,6 +1,7 @@
 package com.practice.mypay.dbservice.controller;
 
 import com.practice.mypay.dbservice.model.Customer;
+import com.practice.mypay.dbservice.model.PaymentPayload;
 import com.practice.mypay.dbservice.model.Transactions;
 
 import com.practice.mypay.dbservice.services.IDatabaseService;
@@ -47,9 +48,9 @@ public class DbController {
     }
 
 
-    @GetMapping(value = "db/makePayment/{number1}/{number2}/{amount}")
-    public Customer makePayment(@PathVariable("number1") final String number1,@PathVariable("number2") final String number2,@PathVariable("amount") final BigDecimal transferAmount)
+    @PutMapping(value = "db/makePayment")
+    public Customer makePayment(@RequestBody PaymentPayload payload)
     {
-    	return iDatabaseService.makePaymentService(number1, number2, transferAmount);
+    	return iDatabaseService.makePaymentService(payload);
     }
 }

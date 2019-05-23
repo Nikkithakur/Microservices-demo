@@ -2,11 +2,13 @@ package com.practice.mypay.accountdetailsservice.controller;
 
 
 import com.practice.mypay.accountdetailsservice.model.Customer;
+import com.practice.mypay.accountdetailsservice.model.Transactions;
 import com.practice.mypay.accountdetailsservice.services.IAccountDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
+import org.springframework.hateoas.Resources;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -50,12 +52,12 @@ public class AccountDetailsController {
     public List getTransactionDetails(@PathVariable("phoneNumber") final String phoneNumber)
     {
     	List list = iAccountDetailsService.getTransactionDetailsService(phoneNumber);
-    	Link selfLink = ControllerLinkBuilder.
-				linkTo(AccountDetailsController.class).
-				slash("accountsService/"+phoneNumber+"/transactions").       				
-				withSelfRel();
-    	list.add(selfLink);
-    	return list;
+    		Link selfLink = ControllerLinkBuilder.
+    				linkTo(AccountDetailsController.class).
+    				slash("accountsService/"+phoneNumber+"/transactions").       				
+    				withSelfRel();
+        	list.add(selfLink);
+        	return list;
     }
 
 

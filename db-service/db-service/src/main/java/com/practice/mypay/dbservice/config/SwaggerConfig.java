@@ -1,12 +1,11 @@
 package com.practice.mypay.dbservice.config;
 
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.google.common.base.Predicates;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -20,17 +19,22 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		
-		
-		
 		return new Docket(DocumentationType.SWAGGER_2).
 				select().
 				apis(RequestHandlerSelectors.any()).
-				paths(PathSelectors.any()).
-				build();
-		
-		
+				paths(Predicates.not(PathSelectors.regex("/error.*"))).
+				build();		
 	}
 	
-	
+	// Below line can also be used to sppecify swagger documentation is needed only for class annotated with rest controller
+	/*
+	@Bean
+	public Docket api() {
+	return new Docket(DocumentationType.SWAGGER_2)
+    .select()
+    .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+    .paths(PathSelectors.any())
+    .build();
+	}
+	*/
 }

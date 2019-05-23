@@ -15,15 +15,22 @@ public class SwaggerConfig {
 
 	@Bean
 	public Docket api() {
-		
-		
-		
 		return new Docket(DocumentationType.SWAGGER_2).
 				select().
 				apis(RequestHandlerSelectors.any()).
 				paths(PathSelectors.any()).
 				build();
-		
-		
-	}
+		}
+	
+	// Below line can also be used to sppecify swagger documentation is needed only for class annotated with rest controller
+		/*
+		@Bean
+		public Docket api() {
+		return new Docket(DocumentationType.SWAGGER_2)
+	    .select()
+	    .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
+	    .paths(PathSelectors.any())
+	    .build();
+		}
+		*/
 }

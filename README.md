@@ -84,3 +84,7 @@
 - ACCOUNTS https://localhost:65352/swagger-ui.html
 - PAYMENTS https://localhost:65353/swagger-ui.html
 
+## Swagger via api=gw or zuul
+
+- ACCOUNTS https://localhost:65354/accounts/swagger-ui.html
+- PAYMENTS https://localhost:65354/payments/swagger-ui.html

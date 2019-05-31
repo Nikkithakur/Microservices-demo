@@ -19,9 +19,25 @@ public class PaymentServiceImpl implements IPaymentService {
 	@Override
 	public Customer makePaymentService(PaymentPayload payload) {
 		
-		final String dbUrl ="http://db-service/db/makePayment";
-		HttpEntity<PaymentPayload> requestBody = new HttpEntity<PaymentPayload>(payload);
-		return restTemplate.exchange(dbUrl, HttpMethod.PUT, requestBody, Customer.class).getBody();
+		if(userDetails(payload.getBenefactor(), payload.getBeneficiary()))
+		{
+			final String dbUrl ="https://db-service/db/makePayment";
+			HttpEntity<PaymentPayload> requestBody = new HttpEntity<PaymentPayload>(payload);
+			return restTemplate.exchange(dbUrl, HttpMethod.PUT, requestBody, Customer.class).getBody();
+		}
+		return null;
+	}
+	
+	protected boolean userDetails(String benefactor, String beneficiary) 
+	{
+		final String url1 ="https://accountdetails-service/accountsService/getDetails/"+benefactor;
+		Customer customer1=restTemplate.getForObject(url1, Customer.class);
+		final String url2 ="https://accountdetails-service/accountsService/getDetails/"+beneficiary;
+		Customer customer2=restTemplate.getForObject(url2, Customer.class);
+		if(customer1!=null && customer2!=null )
+			return true;
+		else
+			return false;
 	}
 
 }

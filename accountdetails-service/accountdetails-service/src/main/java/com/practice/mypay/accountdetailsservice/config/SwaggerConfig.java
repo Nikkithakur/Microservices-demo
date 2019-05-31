@@ -11,6 +11,18 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+
+/*
+1.	In Traditional xml based approach in Spring all the bean definitions are defined in applicationContext.xml configuration file
+	spring container uses this root context configuration to create "application context".
+ 
+2.	But we are using java annotations imported from org.springframework.context.annotation
+	@Configuration - class level annotation, which has @Bean annotations
+
+3.	By default, the scope of beans created by spring container is "Singleton", which can be changed to "Prototype".
+	A singleton bean - only once the bean is created by spring container during the life of the application
+
+ */
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
@@ -20,7 +32,7 @@ public class SwaggerConfig {
 		return new Docket(DocumentationType.SWAGGER_2).
 				select().
 				apis(RequestHandlerSelectors.any()).
-				paths(Predicates.not(PathSelectors.regex("/error.*"))).
+				paths(PathSelectors.regex("/accountsService/.*")).
 				build();
 	}
 	

@@ -1,4 +1,28 @@
 spring:
+  profiles: dev-nossl
+
+eureka:
+  instance:
+    hostname: localhost
+    home-page-url: http://localhost:${server.port}
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:65350/eureka/        
+
+zuul:
+  routes:
+    accountdetails-service:
+      path: /accounts/**
+      service-id: accountdetails-service
+    payments-service:
+      path: /payments/**
+      service-id: payments-service
+
+---
+
+spring:
   profiles: dev
   
 eureka:
@@ -33,5 +57,8 @@ zuul:
     payments-service:
       path: /payments/**
       service-id: payments-service
+    ribbon:
+      eager-load:
+         enabled: true
 
     

@@ -1,4 +1,16 @@
+spring:
+  profiles: dev-nossl
 
+eureka:
+  instance:
+    hostname: localhost
+    home-page-url: http://localhost:${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:65350/eureka/        
+---
 spring:
   profiles: dev
 

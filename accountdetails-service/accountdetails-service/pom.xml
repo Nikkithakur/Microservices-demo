@@ -34,12 +34,23 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
-		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -50,7 +61,7 @@
 			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
-<dependency>
+		<dependency>
     		<groupId>io.springfox</groupId>
     		<artifactId>springfox-swagger2</artifactId>
     		<version>2.9.2</version>
@@ -61,6 +72,11 @@
     		<artifactId>springfox-swagger-ui</artifactId>
     		<version>2.9.2</version>
 		</dependency>
+		
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-devtools</artifactId>
+    	</dependency>
 		
 		<!-- Adding spring context and overriding guava version -->
 		<!-- <dependency>
@@ -90,10 +106,16 @@
 	</dependencyManagement>
 
 <!-- 
-- Differents profiles with different configurations
+- Different profiles with different configurations
 - These activeProfile value will be passed into spring properties
 -->	
 <profiles>
+<profile>
+    <id>dev-nossl</id>
+    <properties>
+      <activeProfile>dev-nossl</activeProfile>
+    </properties>
+  </profile>
   <profile>
     <id>dev</id>
     <activation>

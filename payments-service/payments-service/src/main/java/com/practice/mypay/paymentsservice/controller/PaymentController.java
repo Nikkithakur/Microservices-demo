@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.practice.mypay.paymentsservice.services.IPaymentService;
 import com.practice.mypay.paymentsservices.model.Customer;
 import com.practice.mypay.paymentsservices.model.PaymentPayload;
@@ -21,13 +23,13 @@ public class PaymentController {
 	@Autowired
 	private IPaymentService iPaymentService;
 	
-	@PutMapping(value="/paymentServices/makePayment",produces=MediaTypes.HAL_JSON_VALUE)
+	@PutMapping(value="/paymentsService/makePayment",produces=MediaTypes.HAL_JSON_VALUE)
 	public Customer makePayment(@RequestBody PaymentPayload payload)
 	{
 		Customer customer = iPaymentService.makePaymentService(payload);
 		Link selfLink = ControllerLinkBuilder.
 				linkTo(PaymentController.class).
-				slash("/paymentServices/makePayment/").       				
+				slash("/paymentsService/makePayment/").       				
 				withSelfRel();
 		customer.add(selfLink);
 		return customer;

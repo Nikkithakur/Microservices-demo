@@ -12,7 +12,7 @@ import com.practice.mypay.paymentsservice.model.CustomErrorMessage;
 public class CustomExceptionHandler 
 {
 
-	@ExceptionHandler(value= {HttpClientErrorException.class})
+	@ExceptionHandler(value= {HttpClientErrorException.class,UserNotFoundException.class})
 	public ResponseEntity accountException(Exception e)
 	{
 		CustomErrorMessage error =new CustomErrorMessage();

@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.practice.mypay.paymentsservice.exception.InSufficientAccountBalanceException;
 import com.practice.mypay.paymentsservice.exception.TransferAmountException;
+import com.practice.mypay.paymentsservice.exception.UserNotFoundException;
 import com.practice.mypay.paymentsservice.exception.PhoneNumberFormatException;
 import com.practice.mypay.paymentsservice.model.Customer;
 import com.practice.mypay.paymentsservice.model.PaymentPayload;
@@ -26,7 +27,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	private RestTemplate restTemplate;
 	
 	@Override
-	public Customer makePaymentService(PaymentPayload payload) throws RestClientException, PhoneNumberFormatException, TransferAmountException, InSufficientAccountBalanceException {
+	public Customer makePaymentService(PaymentPayload payload) throws RestClientException, PhoneNumberFormatException, TransferAmountException, InSufficientAccountBalanceException, UserNotFoundException {
 		
 		if(!Pattern.matches("[1-9]{1}[0-9]{9}", payload.getBenefactor()))
 			throw new PhoneNumberFormatException("Incorrect format: "+payload.getBenefactor()+" , Mobile Number should contain 10 digts and should not begin with zero");
@@ -53,7 +54,7 @@ public class PaymentServiceImpl implements IPaymentService {
 	
 	
 	
-	private boolean userDetails(String benefactor, String beneficiary, BigDecimal amount) throws InSufficientAccountBalanceException 
+	private boolean userDetails(String benefactor, String beneficiary, BigDecimal amount) throws InSufficientAccountBalanceException, UserNotFoundException 
 	{
 		final String url1 ="https://accountdetails-service/accountsService/getDetails/"+benefactor;
 		final String url2 ="https://accountdetails-service/accountsService/getDetails/"+beneficiary;
@@ -67,7 +68,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		}
 		catch(HttpClientErrorException e)
 		{
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Account associated with number: "+benefactor+" not found");
+			throw new UserNotFoundException("Account associated with number: "+benefactor+" not found");
 		}
 		
 		try
@@ -77,7 +78,7 @@ public class PaymentServiceImpl implements IPaymentService {
 		
 		catch(HttpClientErrorException e)
 		{
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Account associated with number: "+ beneficiary+" not found");
+			throw new UserNotFoundException("Account associated with number: "+ beneficiary+" not found");
 		}
 		
 		return true;	

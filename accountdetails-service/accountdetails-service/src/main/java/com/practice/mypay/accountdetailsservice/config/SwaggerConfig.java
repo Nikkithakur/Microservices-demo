@@ -5,8 +5,11 @@ import org.springframework.context.annotation.Configuration;
 
 import com.google.common.base.Predicates;
 
+import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -33,8 +36,19 @@ public class SwaggerConfig {
 				select().
 				apis(RequestHandlerSelectors.any()).
 				paths(PathSelectors.regex("/accountsService/.*")).
-				build();
+				build().apiInfo(apiEndPointsInfo());
 	}
+	
+	private ApiInfo apiEndPointsInfo() 
+	{	
+        return new ApiInfoBuilder().title("ACCOUNTS API")
+            .description("Accounts related services swagger document"+"\n\n"+"Contact me: ")
+            .contact(new Contact("Nikhil Thakur", "http://www.23rdtechguy.com", "nikhilprasadthakur@gmail.com"))
+            //.license("Apache 2.0")
+            //.licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
+            .version("v1")
+            .build();
+    }
 	
 	// Below line can also be used to sppecify swagger documentation is needed only for class annotated with rest controller
 		/*

@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.practice.mypay.paymentsservice.exception.InSufficientAccountBalanceException;
+import com.practice.mypay.paymentsservice.exception.TransferAmountException;
+import com.practice.mypay.paymentsservice.exception.PhoneNumberFormatException;
+import com.practice.mypay.paymentsservice.model.Customer;
+import com.practice.mypay.paymentsservice.model.PaymentPayload;
 import com.practice.mypay.paymentsservice.services.IPaymentService;
-import com.practice.mypay.paymentsservices.model.Customer;
-import com.practice.mypay.paymentsservices.model.PaymentPayload;
 
 @RestController
 public class PaymentController {
@@ -24,14 +28,14 @@ public class PaymentController {
 	private IPaymentService iPaymentService;
 	
 	@PutMapping(value="/paymentsService/makePayment",produces=MediaTypes.HAL_JSON_VALUE)
-	public Customer makePayment(@RequestBody PaymentPayload payload)
+	public Customer makePayment(@RequestBody PaymentPayload payload) throws RestClientException, PhoneNumberFormatException, TransferAmountException, InSufficientAccountBalanceException
 	{
 		Customer customer = iPaymentService.makePaymentService(payload);
-		Link selfLink = ControllerLinkBuilder.
-				linkTo(PaymentController.class).
-				slash("/paymentsService/makePayment/").       				
-				withSelfRel();
-		customer.add(selfLink);
+		/*
+		 * Link selfLink = ControllerLinkBuilder. linkTo(PaymentController.class).
+		 * slash("/paymentsService/makePayment/"). withSelfRel();
+		 * customer.add(selfLink);
+		 */
 		return customer;
 
 	}

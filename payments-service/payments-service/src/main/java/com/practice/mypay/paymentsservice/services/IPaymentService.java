@@ -1,10 +1,15 @@
 package com.practice.mypay.paymentsservice.services;
 
 
-import com.practice.mypay.paymentsservices.model.Customer;
-import com.practice.mypay.paymentsservices.model.PaymentPayload;
+import org.springframework.web.client.RestClientException;
+
+import com.practice.mypay.paymentsservice.exception.InSufficientAccountBalanceException;
+import com.practice.mypay.paymentsservice.exception.TransferAmountException;
+import com.practice.mypay.paymentsservice.exception.PhoneNumberFormatException;
+import com.practice.mypay.paymentsservice.model.Customer;
+import com.practice.mypay.paymentsservice.model.PaymentPayload;
 
 public interface IPaymentService {
 
-	Customer makePaymentService(PaymentPayload payload);
+	Customer makePaymentService(PaymentPayload payload) throws RestClientException, PhoneNumberFormatException, TransferAmountException, InSufficientAccountBalanceException;
 }

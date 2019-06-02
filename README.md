@@ -63,7 +63,7 @@
 - [POST]create Account https://localhost:65351/db/createAccount with payload
 - [GET] accountdetails https://localhost:65351/db/{phonenumber}
 - [GET] transaction list https://localhost:65351/db/{phonenumber}/transactions
-- [GET]makepayment https://localhost:65351/db/makePayment/{benefactor}/{beneficiary}/{transferAmount}
+- [PUT]makepayment https://localhost:65351/db/makePayment with payload
 
 ## eureka-service
 - https://localhost:65350/eureka/
@@ -76,7 +76,7 @@
 
 ## payments-service endpoints
 
-- [GET]makepayment https://localhost:65353/paymentServices/makePayment/{benefactor}/{beneficiary}/{amount}
+- [PUT]makepayment https://localhost:65353/paymentServices/makePayment
 
 ## Swagger urls for above projects
 

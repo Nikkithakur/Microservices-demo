@@ -2,6 +2,10 @@ package com.practice.mypay.dbservice.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /*
@@ -25,6 +29,7 @@ import javax.persistence.*;
  */
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Transactions {
 
 
@@ -35,23 +40,4 @@ public class Transactions {
 
     @Column
     private String transactionMsg;
-
-    public Transactions() {
-    }
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public String getTransactionMsg() {
-        return transactionMsg;
-    }
-
-    public void setTransactionMsg(String transactionMsg) {
-        this.transactionMsg = transactionMsg;
-    }
 }

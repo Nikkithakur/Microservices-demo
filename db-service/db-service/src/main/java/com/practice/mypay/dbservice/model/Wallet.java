@@ -4,11 +4,16 @@ package com.practice.mypay.dbservice.model;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
+@Getter @Setter @NoArgsConstructor
 public class Wallet {
 
 /*
@@ -43,31 +48,5 @@ public class Wallet {
     @OneToMany
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private List<Transactions> transactions;
-
-    public Wallet() {
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public List<Transactions> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transactions> transactions) {
-        this.transactions = transactions;
-    }
+    
 }

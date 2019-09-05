@@ -2,6 +2,10 @@ package com.practice.mypay.dbservice.model;
 
 import org.hibernate.annotations.Cascade;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 /*
@@ -26,6 +30,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Customer")
+@Getter @Setter @NoArgsConstructor
 public class Customer {
 
     @Id
@@ -37,30 +42,4 @@ public class Customer {
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private Wallet wallet;
 
-    public Customer() {
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Wallet getWallet() {
-        return wallet;
-    }
-
-    public void setWallet(Wallet wallet) {
-        this.wallet = wallet;
-    }
 }

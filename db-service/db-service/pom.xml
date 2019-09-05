@@ -55,6 +55,11 @@
 		</dependency>
 		
 		<dependency>
+   			<groupId>com.h2database</groupId>
+   			<artifactId>h2</artifactId>
+   			<scope>runtime</scope>
+ 		</dependency>
+		<dependency>
         	<groupId>org.springframework.boot</groupId>
         	<artifactId>spring-boot-devtools</artifactId>
     	</dependency>
@@ -71,17 +76,13 @@
     		<version>2.9.2</version>
 		</dependency>
 		
-		<!-- Adding spring context and overriding guava version -->
-		<!--  <dependency>
-    		<groupId>org.springframework</groupId>
-    		<artifactId>spring-context-support</artifactId>
-		</dependency>
-
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 		<dependency>
-		    <groupId>com.google.guava</groupId>
-    		<artifactId>guava</artifactId>
-    		<version>19.0</version>
-		</dependency>-->
+    		<groupId>org.projectlombok</groupId>
+    		<artifactId>lombok</artifactId>
+    		<scope>provided</scope>
+		</dependency>
+		
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -115,11 +116,17 @@
   </profile>
   <profile>
     <id>dev</id>
+    <properties>
+      <activeProfile>dev</activeProfile>
+    </properties>
+  </profile>
+  <profile>
+    <id>h2-nossl</id>
     <activation>
       <activeByDefault>true</activeByDefault>
     </activation>
     <properties>
-      <activeProfile>dev</activeProfile>
+      <activeProfile>h2-nossl</activeProfile>
     </properties>
   </profile>
   <profile>

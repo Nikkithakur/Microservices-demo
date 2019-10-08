@@ -28,3 +28,7 @@ dependency-reduced-pom.xml
 
 ### VS Code ###
 .vscode/
+
+### Log and Compressed files###
+.log
+.gz

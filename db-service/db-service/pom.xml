@@ -80,6 +80,7 @@
 		<dependency>
     		<groupId>org.projectlombok</groupId>
     		<artifactId>lombok</artifactId>
+    		<version>1.18.0</version>
     		<scope>provided</scope>
 		</dependency>
 		
@@ -190,6 +191,25 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+  				<groupId>com.google.cloud.tools</groupId>
+  				<artifactId>jib-maven-plugin</artifactId>
+  				<version>1.0.0</version>
+  				<configuration>
+  					<from>
+  						<auth>
+  								<username>nikhilprasadthakur@gmail.com</username>
+  								<password>Nikhil@6</password>
+  						</auth>
+  					</from>
+    				<to>
+      					<image>docker.io/dummy</image>
+    				</to>
+  				</configuration>
+			</plugin>
+            
+            
 		</plugins>
 </build>
 

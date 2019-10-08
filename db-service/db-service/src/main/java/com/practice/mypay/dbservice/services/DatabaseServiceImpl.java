@@ -11,13 +11,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.practice.mypay.dbservice.model.Customer;
 import com.practice.mypay.dbservice.model.PaymentPayload;
 import com.practice.mypay.dbservice.model.Transactions;
-import com.practice.mypay.dbservice.repo.AccountRepository;
+import com.practice.mypay.dbservice.repo.DBRepository;
 
 @Service
 public class DatabaseServiceImpl implements IDatabaseService {
 
 	@Autowired
-    private AccountRepository accountRepository;
+    private DBRepository accountRepository;
 	
 	@Override
 	@Transactional

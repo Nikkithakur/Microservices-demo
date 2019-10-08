@@ -1,19 +1,24 @@
 package com.practice.mypay.dbservice.model;
 
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.GenericGenerator;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.GenericGenerator;
+
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @Builder
 public class Wallet {
 
 /*

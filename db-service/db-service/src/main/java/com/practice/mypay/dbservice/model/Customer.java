@@ -1,12 +1,16 @@
 package com.practice.mypay.dbservice.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cascade;
 
+import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 /*
 1. CascadeType=Cascade.ALL to overcome below scenario
@@ -30,7 +34,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "Customer")
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @Builder
 public class Customer {
 
     @Id
@@ -41,5 +45,4 @@ public class Customer {
     @OneToOne
     @Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     private Wallet wallet;
-
 }

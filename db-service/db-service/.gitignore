@@ -30,5 +30,5 @@ dependency-reduced-pom.xml
 .vscode/
 
 ### Log and Compressed files###
-.log
-.gz
+*.log
+*.gz
